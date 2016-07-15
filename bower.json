@@ -1,0 +1,17 @@
+{
+  "name": "cd_mean_angular_productsfactory",
+  "homepage": "https://github.com/shtakai/cd_mean_angular_productsfactory",
+  "authors": [
+    "Alyson Takai <shtakai@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
