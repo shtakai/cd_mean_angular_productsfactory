@@ -60,7 +60,11 @@
             <td>{{ product.name  }}</td>
             <td>HKD: {{ product.price || currency }}</td>
             <td>{{ product.getQty() }}</td>
-            <td><button ng-click="buy(product)">BUY</button></td>
+            <td>
+
+              <button ng-if="product.getQty() > 0" ng-click="buy(product)">BUY</button>
+              <strong ng-if="product.getQty() <=0">Out of stock</strong>
+            </td>
           </tr>
         </tbody>
 
@@ -73,5 +77,10 @@
 <script src="./bower_components/lodash/lodash.js"></script>
 <script src="./bower_components/chance/chance.js"></script>
 <script src="./main.js"></script>
+<script src="./myApp.js"></script>
+<script src="./product.factory.js"></script>
+<script src="./products.controller.js"></script>
+<script src="./orders.controller.js"></script>
+
 <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
 </html>
