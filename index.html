@@ -32,8 +32,8 @@
         <tbody>
           <tr ng-repeat="product in productList">
             <td>{{ product.name  }}</td>
-            <td>{{ product.price }}</td>
-            <td>{{ product }}</td>
+            <td>HKD: {{ product.price || currency }}</td>
+            <td><button ng-click="delete(product)">Delete Product</button></td>
           </tr>
         </tbody>
 

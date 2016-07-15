@@ -4,7 +4,9 @@ let myApp = angular.module('myApp', []);
 
 function Product (name, price){
   this.name = name || chance.word();
-  this.price = new Number(price || 0.00);
+  price = price || 0.00
+  this.price = isNaN(new Number(price)) ? new Number(0.00) : new Number(price);
+
 }
 
 myApp.factory('productFactory', function(){
@@ -26,6 +28,14 @@ myApp.factory('productFactory', function(){
     productList.unshift(
       new Product(name, price)
     )
+    callback(productList);
+  }
+
+  factory.delete = function(product, callback){
+    console.log('F delete')
+    _.remove(productList, function(_product){
+      return _product == product;
+    });
     callback(productList);
   }
 
@@ -54,6 +64,17 @@ myApp.controller('productsController',[
           $scope.productList = data;
         }
       )
+      $scope.newProduct = {};
     }
+
+    $scope.delete = function(product){
+      console.log('C delete');
+      productFactory.delete(
+        product,
+        function(data){
+          $scope.productList = data;
+        }
+      )
+    };
   }
 ])
