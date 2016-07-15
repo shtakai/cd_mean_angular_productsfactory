@@ -5,7 +5,7 @@
   <title></title>
 </head>
 <body ng-app="myApp">
-  <div class="container" ng-controller="productsController">
+  <div class="container" ng-controller="productsController" ng-init="index()">
     <h1>products controller</h1>
     <div>
       <div>
@@ -41,10 +41,46 @@
 
     </div>
   </div>
+
+  <div class="container" ng-controller="ordersController" ng-init="index()">
+
+    <h1>orders controller</h1>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Qty Available</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="product in productList">
+            <td>{{ product.name  }}</td>
+            <td>HKD: {{ product.price || currency }}</td>
+            <td>{{ product.getQty() }}</td>
+            <td>
+
+              <button ng-if="product.getQty() > 0" ng-click="buy(product)">BUY</button>
+              <strong ng-if="product.getQty() <=0">Out of stock</strong>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+
+    </div>
+  </div>
 </body>
 <script src="./bower_components/angular/angular.js"></script>
 <script src="./bower_components/lodash/lodash.js"></script>
 <script src="./bower_components/chance/chance.js"></script>
 <script src="./main.js"></script>
+<script src="./myApp.js"></script>
+<script src="./product.factory.js"></script>
+<script src="./products.controller.js"></script>
+<script src="./orders.controller.js"></script>
+
 <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
 </html>
