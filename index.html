@@ -4,15 +4,47 @@
   <meta charset="UTF-8">
   <title></title>
 </head>
-<body>
-  <div class="container" ng-app="myApp">
+<body ng-app="myApp">
+  <div class="container" ng-controller="productsController">
     <h1>products controller</h1>
-    <div ng-controller="productsController">
+    <div>
+      <div>
+        Product Name
+        <input type="text" ng-model="newProduct.name">
+      </div>
+      <div>
+        Product price
+        <input type="text" ng-model="newProduct.price">
+      </div>
+      <div>
+        <button ng-click="add()">Add Product</button>
+      </div>
+    </div>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="product in productList">
+            <td>{{ product.name  }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product }}</td>
+          </tr>
+        </tbody>
+
+      </table>
+
     </div>
   </div>
 </body>
 <script src="./bower_components/angular/angular.js"></script>
 <script src="./bower_components/lodash/lodash.js"></script>
+<script src="./bower_components/chance/chance.js"></script>
 <script src="./main.js"></script>
 <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
 </html>
